@@ -1,0 +1,30 @@
+{
+  "name": "linkkit",
+  "version": "1.0.0",
+  "description": "This is a url shortner api",
+  "main": "app.js",
+  "scripts": {
+    "build": "npx tsc && node dist/server.js",
+    "start": "node dist/server.js",
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Karikari",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/mongoose": "^5.11.97",
+    "@types/nanoid": "^3.0.0",
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^4.22.3",
+    "mongoose": "^9.10.3",
+    "nanoid": "^3.3.19"
+  }
+}
