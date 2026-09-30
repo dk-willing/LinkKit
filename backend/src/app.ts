@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-
+import urlRoute from "./routes/url.routes"
 
 const app = express()
 
@@ -12,6 +12,8 @@ app.use(cors({
     credentials: true
 }))
 
+
+app.use('/api/v1', urlRoute)
 
 
 export default app
