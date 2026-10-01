@@ -13,14 +13,16 @@ export default function Form() {
           <form action="">
             <div className="flex">
               <div className="relative w-full">
-                <div className="absolute flex items-center inset-0 ps-4 pointer-events-none">
-                  <p>linkkit.in /</p>
+                <div className="absolute flex items-center inset-0  pointer-events-none">
+                  <p className="h-full ps-4 pe-3  flex items-center bg-orange-600/20 font-medium rounded-tl-lg rounded-bl-lg">
+                    willing.in /
+                  </p>
                 </div>
                 <input
                   type="text"
                   placeholder="add your link"
                   required
-                  className="block w-full bg-white ps-24 p-4 border-2 outline-none focus:ring-orange-700 focus:border-orange-700 rounded-lg active:border-orange-700"
+                  className="block w-full bg-white ps-28 p-4.5 border-2 outline-none focus:ring-orange-700 focus:border-orange-700 rounded-lg active:border-orange-700"
                 />
 
                 <button

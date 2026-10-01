@@ -28,8 +28,8 @@ export default function Footer() {
                   : new Date().getMonth()}{" "}
                 - {new Date().getFullYear()}
               </p>
-
-              <p>, {now.toLocaleTimeString()}</p>
+              &mdash;
+              <p>{now.toLocaleTimeString()}</p>
             </div>
           </div>
         </div>
