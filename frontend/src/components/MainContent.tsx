@@ -7,22 +7,30 @@ import DataTable from "./DataTable";
 
 export default function MainContent() {
   const [data, setData] = useState<URLData[]>([]);
+  const [reload, setReload] = useState<boolean>(false);
 
-  const fetchData = async () => {
-    const res = await axios.get(`${serverUrl}/short-url`);
-
-    console.log(res.data.data);
-    setData(res.data.data.urls);
+  const updateReloadState = () => {
+    setReload((current) => !current);
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    let cancelled = false;
+
+    axios.get(`${serverUrl}/short-url`).then((res) => {
+      if (!cancelled) {
+        setData(res.data.data.urls);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [reload]);
 
   return (
     <div className="min-h-[82vh] container mx-auto max-w-5xl">
-      <Form />
-      <DataTable data={data} />
+      <Form updateReloadState={updateReloadState} />
+      <DataTable updateReloadState={updateReloadState} data={data} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export const getAllUrls = async (
   res: express.Response,
 ) => {
   try {
-    const urls = await URLModel.find();
+    const urls = await URLModel.find().sort({createdAt: -1});
     if (!urls) {
       return res.status(404).json({
         message: "No url found",

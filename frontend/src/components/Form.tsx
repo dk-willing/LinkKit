@@ -3,7 +3,13 @@ import { useState } from "react";
 import axios from "axios";
 import { serverUrl } from "../helpers/Constants";
 
-export default function Form() {
+type FormProps = {
+  updateReloadState: () => void;
+};
+
+export default function Form(props: FormProps) {
+  const { updateReloadState } = props;
+
   const [fullPath, setFullPath] = useState<string>("");
 
   const handleSubmit = async (e: React.SubmitEvent) => {
@@ -13,6 +19,7 @@ export default function Form() {
         fullPath: fullPath,
       });
       setFullPath("");
+      updateReloadState();
     } catch (error) {
       console.log(error);
     }

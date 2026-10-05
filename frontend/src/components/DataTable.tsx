@@ -1,15 +1,15 @@
-import React from "react";
 import type { URLData } from "../interfaces/URLData";
 import { Link } from "react-router-dom";
 import { serverUrl } from "../helpers/Constants";
 import axios from "axios";
 
-type Props = {
+type DataTableProps = {
   data?: URLData[];
+  updateReloadState: () => void;
 };
 
-export default function DataTable<Props>(props: Props) {
-  const { data } = props;
+export default function DataTable(props: DataTableProps) {
+  const { data, updateReloadState } = props;
 
   const copyToClipboard = async (path: string) => {
     try {
@@ -23,13 +23,14 @@ export default function DataTable<Props>(props: Props) {
   const deleteUrl = async (id: string) => {
     try {
       await axios.delete(`${serverUrl}/short-url/${id}`);
+      updateReloadState();
     } catch (error) {
       console.log(error);
     }
   };
 
   const renderTable = () => {
-    return data.map((item: URLData) => {
+    return data?.map((item: URLData) => {
       return (
         <tr
           className="border-b text-gray-700 bg-white hover:bg-gray-600 hover:text-white transition-all w-full"
