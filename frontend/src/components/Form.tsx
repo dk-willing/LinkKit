@@ -1,4 +1,23 @@
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+import { serverUrl } from "../helpers/Constants";
+
 export default function Form() {
+  const [fullPath, setFullPath] = useState<string>("");
+
+  const handleSubmit = async (e: React.SubmitEvent) => {
+    e.preventDefault();
+    try {
+      await axios.post(`${serverUrl}/short-url`, {
+        fullPath: fullPath,
+      });
+      setFullPath("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="py-4">
       <div className="bg-banner bg-cover rounded-xl bg-center p-4">
@@ -10,7 +29,7 @@ export default function Form() {
             Free Tool To Shorten Your URL
           </p>
 
-          <form action="">
+          <form action="" onSubmit={handleSubmit}>
             <div className="flex">
               <div className="relative w-full">
                 <div className="absolute flex items-center inset-0  pointer-events-none">
@@ -23,6 +42,10 @@ export default function Form() {
                   placeholder="add your link"
                   required
                   className="block w-full bg-white ps-28 p-4.5 border-2 outline-none focus:ring-orange-700 focus:border-orange-700 rounded-lg active:border-orange-700"
+                  value={fullPath}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setFullPath(e.target.value)
+                  }
                 />
 
                 <button
