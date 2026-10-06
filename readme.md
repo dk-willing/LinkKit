@@ -355,7 +355,7 @@ Contributions, issues and feature requests are welcome.
 
 ## License
 
-Distributed under the **ISC License**. Add a `LICENSE` file to the repository root to make this official.
+Distributed under the **MIT License**.
 
 ## Author
 
